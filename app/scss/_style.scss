@@ -1196,7 +1196,8 @@ h1, h2, h3, h4{
 }
 h1{
 	position: relative;
-	font-weight: 400;
+	text-transform: uppercase;
+	font-weight: 600;
 	font-size: em(33, 16);
 	padding-bottom: 10px;
 }
@@ -1365,7 +1366,7 @@ a[underline]{
 		text-align: center;
 		.slide-header{
 			left: 0!important;
-			top: 10% !important;
+			top: 20% !important;
 		}
 		.btn-def{
 			margin: 15px auto !important;
@@ -1465,6 +1466,7 @@ a[underline]{
 
 
  
+
 //short-about
 .short-about{
 	z-index: 1;
@@ -1477,12 +1479,12 @@ a[underline]{
 }
 
 
-
 //short-production
 .bg-short-productions{
 	opacity: 0.1;
 	background-color: #093563;
 	background-position: center center;
+	background-size: cover;
 	@extend .fuller;
 }
 .short-productions{
@@ -1497,18 +1499,11 @@ a[underline]{
 		border-radius: 5px;
 		background-color: white;
 		overflow: hidden;
-		height: 500px;
 		position: relative;
 		box-shadow: 0 0 0 0 black;
 		//transition: all 0.3s linear;
 		transform: scale(0.9);
 
-		&:nth-child(odd){
-			transform: translateY(10px) scale(0.9);
-		}
-		&:nth-child(even){
-			transform: translateY(-10px) scale(0.9);
-		}
 
 		&:hover{
 			box-shadow: 0 0 15px 0 black;
@@ -1518,19 +1513,22 @@ a[underline]{
 				div{
 					transform: scale(1);
 				}
-				//background-color: rgba( black, 0.5 );
 			}
 			.bg-productions-item{
 				opacity: 1;
 			}
 			.desc-content{
 				color: white;
+				.fa{
+					color: white;
+					transform: rotate(180deg);
+				}
 			}
+
 		}
 	}
 
 	.cell-hover{
-		//transition: all 0.3s ease-in-out;
 		z-index: 3;
 		text-align: center;
 		background-color: black;
@@ -1541,6 +1539,7 @@ a[underline]{
 			width: 100%;
 		}
 		.fa{
+			
 			margin: 15px 0;
 		}
 	}
@@ -1558,8 +1557,29 @@ a[underline]{
 		font-weight: 700;
 		}
 		.fa{
+			transition: all 0.3s ease-in-out;
 			font-size: 50px;
 			color: gray;
+		}
+	}
+	@media (max-width: 991px){
+		figure{
+			width: 80%;
+			height: 300px;
+			transform: scale(1);
+		}
+	}
+	@media (min-width: 992px){
+		.flickity-prev-next-button.next{right:0;}
+		.flickity-prev-next-button.previous{left:0;}
+		figure{
+			height: 500px;
+			&:nth-child(odd){
+				transform: translateY(10px) scale(0.9);
+			}
+			&:nth-child(even){
+				transform: translateY(-10px) scale(0.9);
+			}
 		}
 	}
 }
@@ -1576,125 +1596,77 @@ a[underline]{
 
 
 
-//short-portfolio
-.carousel-portfolio{
-	.carousel-cell{
-		width: (100)+%;
-	}
-	.carousel-nav{
-		.circle{
-			width: 5px;
-			height: 5px;
-			border-radius: 50%;
-			position: absolute;
-			display: inline-block;
-			vertical-align: middle;
 
-			margin: 8px 25px;
-			background-color: $color-2;
-		}
-		.prev-next{
-			position: relative;
-			display: inline-block;
-			padding: 25px 25px;
-			text-align: center;
-			width: 200px;
-			margin: 0 15px;
-			border-radius: 25px;
-			background-color: white;
-			box-shadow: 0 2px 15px -7px black;
-			&:hover{
-				color: white;
-				background-color: $color-1;
-				.circle{
-					background-color: white;
-				}
-			}
-			&:first-child{
-				margin-left: 0;
-			}
-		}
-		.next .circle {
-			right: 0;
-		}
-		.prev .circle {
-			left: 0;
-		}
-	}
 
-	//animation
-	
-	.bottom-content,
-	.img-content,
-	.desc-content{
-		opacity: 0;
-		transition: all 0.3s ease-in-out;
-	}
-	.desc-content{
-		transition-delay: 0.5s;
-	}
-	.img-content{
-		transform: scale(0.8);
-		transition-delay: 0.7s;
-	}
-	.bottom-content{
-		transition-delay: 0.6s;
-		transform: matrix(1,0,0,1,0,100);
-	}
-	.carousel-cell.is-selected{
-		.desc-content, .img-content, .bottom-content{
-			opacity: 1;
-			transform: scale(1);
-		}
-	}
-	
+//short-brands
+.short-brands{
+	background-image: url("../img/other/short-brands-bg.jpg");
+	background-position: center center;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-//short-news short-reviews
+//short-overview
+//short-news
 .short-news-items{
-	@include align-cells(90, 2, table);
-	@include img-flex-align(flex-end, 145px);
-	@media ( max-width:991px ) {
-		@include align-cells(90, 1, table);
-	}
-}
-.short-reviews-items{
-	@include align-cells(95, 1);
-
-	.bottom-content{
-		.img-circle{
-			max-width: 97px; 
-			max-height: 97px; 	
+	.carousel-content{
+		@include align-cells(100, 2, table);
+		@include img-flex-align(flex-end, 145px);
+		@media ( max-width:991px ) {
+			@include align-cells(100, 1, table);
 		}
 	}
+	figure{
+		transition: transform 0.5s linear;
+		font-size: 0.9em;
+	}
+	figure:not(.is-selected){
+		opacity: 0.6;
+		z-index: -1;
+	}
+	.is-selected{
+
+	}
+	.is-prev{
+		transform: translateX(60%) scale(0.7);
+	}
+	.is-next{
+		transform: translateX(-60%) scale(0.7);
+	}
+
 	.desc-content{
-		box-shadow: 0 0 20px 0px rgba(black, 0.1);
+		padding: 15px 20px;
+		min-height: 200px;
 	}
-	.carousel-nav{
-		position: relative;
-    width: 100%;
-		.fa{
-			margin: 15px 5px ;
-			font-size: 25px;
+	.link-content{
+		position: absolute;
+		font-weight: 600;
+		text-transform: uppercase;
+		bottom: 25px;
+	}
+	.carousel-prev-next{
+		@media (max-width: 991px){
+			display: none;
 		}
-		@media ( min-width: 992px ){
-			position: absolute;
-			width: auto;
-			right: 15px;
-			bottom: 20px;
+		.next, .prev{
+			font-size: 40px;
 		}
+		.next{
+			right: 15%;
+		}
+		.prev{
+			left: 15%;
+		}
+
+	}
+}
+
+.video-content{
+	iframe{
+		width: 100%;
+		margin-top: 15px;
+		margin-bottom: 15px;
+		//width: 100%;
+		height: 300px;
 	}
 }
 
@@ -1706,16 +1678,21 @@ a[underline]{
 
 
 
-//project
-.project{
-	.grid-img{
-		//text-align: center;
-	}
-	.grid-img-item {
-		//float: none;
-		//display: inline-block;
-	}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1751,7 +1728,7 @@ a[underline]{
 
 #footer{
 	position: relative;
-	background-color: #1D2824;
+	background-color: $color-2;
 	color: white;
 	min-height: 400px;
 	background-repeat: no-repeat;
@@ -1763,12 +1740,22 @@ a[underline]{
 }
 .footer-menu{
 	li{
-		width: 50%;
+		//width: 50%;
 		margin: 5px 0;
+		a{
+			padding: 5px 15px;
+		}
 		transition: all 0.3s ease-in-out;
 		&:hover{
 			color: $color-1;
 		}
+	}
+}
+.footer-contacts{
+	h3{
+		font-size: 1em;
+		font-weight: 600;
+		text-transform: uppercase;
 	}
 }
 .footer-feedback{
@@ -1860,16 +1847,34 @@ a[underline]{
 
 
 
-
+.carousel-prev-next{
+	color: black;
+	.next, .prev{
+		font-size: 35px;
+		position: absolute;
+		transform: translateY( -50% );
+		top: 50%;
+		&:hover{
+			cursor: pointer;
+			color: $color-1;
+		}
+	}
+	.next{
+		right: 0;
+	}
+	.prev{
+		left: 0;
+	}
+}
 .flickity-btn-1{
 
 	.flickity-prev-next-button{
-		background-color: $color-3;
+		background: transparent;
 		//border: 4px solid white;
 		transition: all 0.2s ease-in-out;
 
 		&:hover, &:focus{
-			background-color: $color-1;
+			background-color: transparent;
 		}
 		.arrow{
 			fill: white;

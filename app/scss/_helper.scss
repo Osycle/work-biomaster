@@ -189,38 +189,47 @@ html{
 	flex-wrap: wrap;
 	position: relative;
 }
+.pie-flex-center{
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+.pie-flex-justify{
+  justify-content: center;
+  flex: 1 1;
+}
 [class*="pie-xs-flex"], [class*="pie-sm-flex"], [class*="pie-md-flex"], [class*="pie-lg-flex"]{
 	align-self: center;
 }
-@for $i from 0 through 10{
+
+
+@for $i from 0 through 12{
 	.pie-xs-flex-#{$i} {
-		flex-basis: (10*$i)+%;
+		flex-basis: ( ($i*100) /12)+%;
 	}
 }
 
-
-
 @media (min-width:768px){
-	@for $i from 0 through 10{
+	@for $i from 0 through 12{
 		.pie-sm-flex-#{$i} {
-			flex-basis: (10*$i)+%;
+			flex-basis: ( ($i*100) /12)+%;
 		}
 	}
 }
 
 @media (min-width:992px){
-	@for $i from 0 through 10{
+	@for $i from 0 through 12{
 		.pie-md-flex-#{$i} {
-			flex-basis: (10*$i)+%;
+			flex-basis: ( ($i*100) /12)+%;
 		}
 	}
 }
 
 
 @media (min-width:1200px){
-	@for $i from 0 through 10{
+	@for $i from 0 through 12{
 		.pie-lg-flex-#{$i} {
-			flex-basis: (10*$i)+%;
+			flex-basis: ( ($i*100) /12)+%;
 		}
 	}
 }

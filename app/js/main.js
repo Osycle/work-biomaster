@@ -70,11 +70,28 @@ $(function(){
 
   // Flikity Carousel
 	function flickityPrevNext( className ) {
-		var carouselName = $( className )
-		var $carousel = carouselName.find( ".carousel-content" );
-		carouselName.find('.carousel-nav .next').on( 'click', function() {$carousel.flickity('next');});
-		carouselName.find('.carousel-nav .prev').on( 'click', function() {$carousel.flickity('previous');});
+		var carouselWrapper = $( className );
+		var carousel = carouselWrapper.find( ".carousel-content" );
+		var carouselPrevNext = carouselWrapper.find( ".carousel-prev-next" );
+		var flkty = carousel.data("flickity");
+
+		carouselPrevNext.find(".next").on( 'click', function() {
+			carousel.flickity('next', true);
+		});
+		console.log( carouselPrevNext.find(".prev") );
+		carouselPrevNext.find(".prev").on( 'click', function() {
+			carousel.flickity('previous', true);
+		});
+		carousel.on( 'select.flickity', function() {
+			$(flkty.selectedElement).removeClass("is-next is-prev")
+			$(flkty.selectedElement).next().addClass("is-next");
+			$(flkty.selectedElement).prev().addClass("is-prev");
+		  	//console.log( $(flkty.selectedElement).next() )
+
+		})
 	}
+
+
 	var arrowStyle = { 
 	  x0: 10,
 	  x1: 60, y1: 50,
@@ -82,24 +99,21 @@ $(function(){
 	  x3: 30
 	}
 
-
-
-	var carouselPortfolio = $('.carousel-portfolio .carousel-content').flickity({
+	var carouselNews = $('.short-news-carousel .carousel-content').flickity({
 		imagesLoaded: true,
-		autoPlay: false,
+		autoPlay: true,
 		arrowShape: arrowStyle,
 		prevNextButtons: false,
-		draggable: false,
+		draggable: checkSm(),
 		selectedAttraction: 0.1,
 		friction: 1,
-		wrapAround: true,
+		wrapAround: false,	
 		pageDots: false,
 		contain: false,
 		percentPosition: true,
-		cellAlign: ''
+		cellAlign: 'center'
 	});
-	flickityPrevNext(".carousel-portfolio");
-
+	flickityPrevNext( $('.short-news-carousel') );
 
 	var carouselProductions = $('.carousel-production-items').flickity({
 		imagesLoaded: true,
@@ -113,16 +127,9 @@ $(function(){
 		pageDots: false,
 		contain: false,
 		percentPosition: true,
-		cellAlign: '0.025'
+		cellAlign: !checkSm() ? '0.025' : 'center'
 	});
-	var flkty = carouselProductions.data('flickity');
-	carouselProductions.on( 'select.flickity', function() {
-
-	  console.log( flkty.cells.length-1 + ' ' + flkty.selectedIndex, flkty )
-	  if( flkty.cells.length-1 === flkty.selectedIndex )
-	  	carouselProductions.flickity( 'next', true );
-
-	})
+	//flickityBackNext( carouselProductions );
 
 
 
@@ -177,45 +184,6 @@ $(function(){
 
 
 
-
-
-	//FORM
-	(function() {
-
-		if (!String.prototype.trim) {
-			(function() {
-				// Make sure we trim BOM and NBSP
-				var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-				String.prototype.trim = function() {
-					return this.replace(rtrim, '');
-				};
-			})();
-		}
-
-		[].slice.call( document.querySelectorAll( '.input__field' ) ).forEach( function( inputEl ) {
-
-			if( inputEl.value.trim() !== '' ) {
-				classie.add( inputEl.parentNode, 'input--filled' );
-			}
-
-			// events:
-			inputEl.addEventListener( 'focus', onInputFocus );
-			inputEl.addEventListener( 'blur', onInputBlur );
-		} );
-
-		function onInputFocus( ev ) {
-			classie.add( ev.target.parentNode, 'input--filled' );
-		}
-
-		function onInputBlur( ev ) {
-			if( ev.target.value.trim() === '' ) {
-				classie.remove( ev.target.parentNode, 'input--filled' );
-			}
-		}
-	})();
-
-
-
 	function onLoaded  (){
 		
 		//MASONRY
@@ -232,27 +200,17 @@ $(function(){
 
 
 
-	if ( !$(".short-news-content").text().trim().length )
-		if ( $(".search-not-found").length )
-			$(".search-not-found").addClass("show");
-
-
-
 	//SCROLL
-	var header_status = false;
+	var minMenu = $(".min-menu") || null;
+	var headerRange = false;
 	$( window ).on("scroll", function(e){
 
-		if($(window).scrollTop() > 300 && header_status == false){
-
-			header_status = true;
-
-			if ( $(".min-menu") ) $(".min-menu").addClass("scrolled");
-
-		}else if($(window).scrollTop() < 300 && header_status == true){
-
-			header_status = false;
-			if ( $(".min-menu") ) $(".min-menu").removeClass("scrolled");
-
+		if( $(window).scrollTop() > 300 && headerRange == false ){
+			headerRange = true;
+			if ( minMenu ) $(".min-menu").addClass("scrolled");
+		}else if( $(window).scrollTop() < 300 && headerRange == true ){
+			headerRange = !true;
+			if ( minMenu ) $(".min-menu").removeClass("scrolled");
 		}
 
 	});
@@ -447,7 +405,7 @@ setTimeout( function (){
 		return this;
 	}
 
-},1)
+},10)
 
 
 
