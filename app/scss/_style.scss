@@ -1486,6 +1486,9 @@ a[underline]{
 	background-position: center center;
 	background-size: cover;
 	@extend .fuller;
+	.carousel-prev-next{
+		color: white;
+	}
 }
 .short-productions{
 	position: relative;
@@ -1608,7 +1611,7 @@ a[underline]{
 //short-overview
 //short-news
 .short-news-items{
-	.carousel-content{
+	.carousel-items{
 		@include align-cells(100, 2, table);
 		@include img-flex-align(flex-end, 145px);
 		@media ( max-width:991px ) {
@@ -1642,6 +1645,9 @@ a[underline]{
 		font-weight: 600;
 		text-transform: uppercase;
 		bottom: 25px;
+	}
+	.carousel-prev-next{
+		color: black;
 	}
 	.carousel-prev-next{
 		@media (max-width: 991px){
@@ -1848,9 +1854,19 @@ a[underline]{
 
 
 .carousel-prev-next{
-	color: black;
+	color: inherit;
+  position: relative;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  pointer-events: none;
+  *{
+  	pointer-events: auto;
+  }
 	.next, .prev{
-		font-size: 35px;
+
+		font-size: 45px;
 		position: absolute;
 		transform: translateY( -50% );
 		top: 50%;

@@ -51,9 +51,6 @@ $(function(){
 		navbars		: [{
 			height 	: 2,
 			content : [ 
-									'<div class="min-menu-logo">'+
-									'<a  href="" ><img src="img/logo.png"/></a>'+
-									'</div>'+
 									'<div class="close-btn bar">'+
 									'<a  href="#page" ><span class="icon-bar"></span><span class="icon-bar"></span></a>'+
 									'</div>'
@@ -71,23 +68,25 @@ $(function(){
   // Flikity Carousel
 	function flickityPrevNext( className ) {
 		var carouselWrapper = $( className );
-		var carousel = carouselWrapper.find( ".carousel-content" );
+		var carousel = carouselWrapper.find( ".carousel-items" );
 		var carouselPrevNext = carouselWrapper.find( ".carousel-prev-next" );
+		var btnNext = carouselPrevNext.find(".next");
+		var btnPrev = carouselPrevNext.find(".prev");
 		var flkty = carousel.data("flickity");
-
-		carouselPrevNext.find(".next").on( 'click', function() {
+		var selected;
+		btnNext.on( 'click', function() {
 			carousel.flickity('next', true);
 		});
-		console.log( carouselPrevNext.find(".prev") );
-		carouselPrevNext.find(".prev").on( 'click', function() {
+		
+		btnPrev.on( 'click', function() {
 			carousel.flickity('previous', true);
 		});
 		carousel.on( 'select.flickity', function() {
-			$(flkty.selectedElement).removeClass("is-next is-prev")
-			$(flkty.selectedElement).next().addClass("is-next");
-			$(flkty.selectedElement).prev().addClass("is-prev");
+			selected = $(flkty.selectedElement);
+			selected.removeClass("is-next is-prev")
+			selected.next().addClass("is-next");
+			selected.prev().addClass("is-prev");
 		  	//console.log( $(flkty.selectedElement).next() )
-
 		})
 	}
 
@@ -99,10 +98,28 @@ $(function(){
 	  x3: 30
 	}
 
-	var carouselNews = $('.short-news-carousel .carousel-content').flickity({
+
+	var carouselProductions = $('.short-productions-carousel .carousel-items').flickity({
 		imagesLoaded: true,
-		autoPlay: true,
+		autoPlay: false,
 		arrowShape: arrowStyle,
+		prevNextButtons: false,
+		draggable: false,
+		selectedAttraction: 0.1,
+		friction: 1,
+		wrapAround: false,	
+		pageDots: false,
+		contain: false,
+		percentPosition: true,
+		cellAlign: !checkSm() ? '0.025' : 'center'
+	});
+	flickityPrevNext( $('.short-productions-carousel') );
+
+	var carouselNews = $('.short-news-carousel .carousel-items').flickity({
+		imagesLoaded: true,
+		autoPlay: false,
+		arrowShape: arrowStyle,
+		initialIndex: 2,
 		prevNextButtons: false,
 		draggable: checkSm(),
 		selectedAttraction: 0.1,
@@ -114,24 +131,6 @@ $(function(){
 		cellAlign: 'center'
 	});
 	flickityPrevNext( $('.short-news-carousel') );
-
-	var carouselProductions = $('.carousel-production-items').flickity({
-		imagesLoaded: true,
-		autoPlay: 3500,
-		arrowShape: arrowStyle,
-		prevNextButtons: true,
-		draggable: false,
-		selectedAttraction: 0.1,
-		friction: 1,
-		wrapAround: false,	
-		pageDots: false,
-		contain: false,
-		percentPosition: true,
-		cellAlign: !checkSm() ? '0.025' : 'center'
-	});
-	//flickityBackNext( carouselProductions );
-
-
 
 
 
