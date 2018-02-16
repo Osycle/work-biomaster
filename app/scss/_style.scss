@@ -32,28 +32,22 @@ $color-gray_3: #212121;
   left: 50%;
 	top: 50%;
 }
-@mixin img-flex-align($align: center, $mheight: 0) {
 
-	.img-content{
-		@if $mheight !=	0{
-			min-height: $mheight;
-		}
+@mixin img-flex-align( $align: center, $mheight: 0, $tag: ".img-content" ) {
+
+	#{$tag}{
+
+		@if $mheight !=	0{	min-height: $mheight; }
+
 		display: flex;
 		align-items: $align;
-		&.center{
-			align-items: center;
-		}
-		&.top{
-			align-items: end;
-			align-items: flex-end;
-		}
-		&.start{
-			align-items: start;
-			align-items: flex-start;
-		}
+		&.center 				{ align-items: center; }
+		&.top 					{ align-items: end; align-items: flex-end; }
+		&.start 				{ align-items: start; align-items: flex-start; }
 	}
 
 }
+
 @mixin placeholder( $color ) {
 
 	&::-moz-placeholder { color: $color;opacity: 1; }
@@ -62,20 +56,26 @@ $color-gray_3: #212121;
 	&::-ms-expand { border: 0;background-color: transparent; }
 
 }
+@mixin img-auto-adaptive(){
+
+	img{
+		max-height: 100%;
+		max-width: 100%;
+		width: auto;
+		height: auto;
+		margin: 0 auto;
+		display: block;
+		@media (max-width: 991px){
+			width: 100%;
+		}
+	}
+}
 @mixin align-cells( $width: 75, $item: 3, $style: block, $tag: figure ) {
 
 	$mrow : ( (100 - $width)/($item*2) )+%;
 	
-	//margin-left: -( ( (100 + ($item/2) ) - $width )/($item*2) )+%;
-	//margin-right: -( ( (100 + ($item/2) ) - $width )/($item*2) )+%;
-
-
 	margin-left: -#{$mrow};
 	margin-right: -#{$mrow};
-	
-	//margin-left: calc(-#{$mrow} - 5px);
-	//margin-right: calc(-#{$mrow} - 5px);
-
 
 	letter-spacing: -6px;
 	*{
@@ -83,44 +83,28 @@ $color-gray_3: #212121;
 	}
 
 	#{$tag}{
-		//float: left;
+
 		margin-left: $mrow;
 		margin-right: $mrow;
+
 		@if $style ==	block{
 			float: left;
 			width: ($width/$item)+%;
 		} 
+
 		@else if $style == table {
 
 			display: inline-table;
 			vertical-align: top;
 			width: ($width/$item)+%;
+			@include img-auto-adaptive();
 
-			.img-content{
-				img{
-					max-height: 100%;
-					max-width: 100%;
-					width: 100%;
-					height: auto;
-					margin: 0 auto;
-					display: block;
-					@media (max-width: 991px){
-						width: 100%;
-					}
-				}
-			}
-			.img-content.auto-width{
-				img{
-					width: auto;
-				}
-			}
-			img[auto]{
-				width: auto;
-			}
 
 		}
 	}
 }
+
+
 
 
 
@@ -1912,6 +1896,62 @@ a[underline]{
 
 
 
+
+
+.stock-news{
+
+	.carousel-container {
+	  display: flex;
+	}
+
+	.carousel {
+	  margin-bottom: 40px;
+	  flex-grow: 1;
+	}
+
+	.carousel-cell {
+	  width: 66%;
+	  height: 300px;
+	  margin-right: 10px;
+	  background: #8C8;
+	  border-radius: 5px;
+	  counter-increment: carousel-cell;
+	}
+
+	/* cell number */
+	.carousel-cell:before {
+	  display: block;
+	  text-align: center;
+	  content: counter(carousel-cell);
+	  line-height: 300px;
+	  font-size: 80px;
+	  color: white;
+	}
+
+	.carousel-nav {
+	  width: 120px;
+	  margin-left: 10px;
+	  max-height: 300px;
+	  overflow-y: scroll;
+	}
+
+	.carousel-nav .carousel-cell {
+	  height: 80px;
+	  width: 100px;
+	  margin: 0 0 5px 0;
+	  cursor: pointer;
+	}
+
+	.carousel-nav .carousel-cell:before {
+	  font-size: 50px;
+	  line-height: 80px;
+	}
+
+	.carousel-nav .carousel-cell.is-nav-selected {
+	  background: #ED2;
+	}
+
+}
 
 
 

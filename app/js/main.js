@@ -157,12 +157,12 @@ $(function(){
 			});
 			var flkty = crs.data('flickity');
 
-			crs.on( 'settle.flickity', function(e) {
-				$(flkty.selectedElement).siblings().css("display", "none");
-			})
-			crs.on( 'select.flickity', function(e) {
-				$(flkty.selectedElement).css("display", "");
-			})
+			// crs.on( 'settle.flickity', function(e) {
+			// 	$(flkty.selectedElement).siblings().css("display", "none");
+			// })
+			// crs.on( 'select.flickity', function(e) {
+			// 	$(flkty.selectedElement).css("display", "");
+			// })
 
 			$(carouselNav).eq(i).flickity({
 				imagesLoaded: true,
