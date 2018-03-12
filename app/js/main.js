@@ -135,52 +135,52 @@ $(function(){
 
 
 
+	function carouselArticle(){
 
+		if( $('.carousel-article').length >= 0 ){
 
-	if( $('.carousel-article').length >= 0 ){
+			var carouselMain = 		$('.carousel-article .carousel-main'),
+					carouselNav = 		$('.carousel-article .carousel-nav');
 
-		var carouselMain = 		$('.carousel-article .carousel-main'),
-				carouselNav = 		$('.carousel-article .carousel-nav');
+			for( var i = 0 ; i < carouselMain.length ; i++ ){
 
-		for( var i = 0 ; i < carouselMain.length ; i++ ){
+				var crs = $(carouselMain).eq(i).flickity({
+					imagesLoaded: true,
+					prevNextButtons: false,
+					//friction: 1,
+					//selectedAttraction: 1,
+					initialIndex: 0,
+					draggable: true,
+					cellAlign: 'center',
+					contain: true,
+					pageDots: false
+				});
+				var flkty = crs.data('flickity');
 
-			var crs = $(carouselMain).eq(i).flickity({
-				imagesLoaded: true,
-				prevNextButtons: false,
-				cellAlign: 'center',
-				//friction: 1,
-				//selectedAttraction: 1,
-				initialIndex: 0,
-				draggable: true,
-				contain: true,
-				pageDots: false
-			});
-			var flkty = crs.data('flickity');
+				// crs.on( 'settle.flickity', function(e) {
+				// 	$(flkty.selectedElement).siblings().css("display", "none");
+				// })
+				// crs.on( 'select.flickity', function(e) {
+				// 	$(flkty.selectedElement).css("display", "");
+				// })
 
-			// crs.on( 'settle.flickity', function(e) {
-			// 	$(flkty.selectedElement).siblings().css("display", "none");
-			// })
-			// crs.on( 'select.flickity', function(e) {
-			// 	$(flkty.selectedElement).css("display", "");
-			// })
+				$(carouselNav).eq(i).flickity({
+					imagesLoaded: true,
+					initialIndex: 0,
+				  asNavFor: $(carouselMain)[i],
+				  prevNextButtons: true,
+				  draggable: true,
+				  adaptiveHeight: true,
+				  cellAlign: 'center',
+				  //contain: true,
+				  pageDots: false
+				});
 
-			$(carouselNav).eq(i).flickity({
-				imagesLoaded: true,
-				initialIndex: 0,
-			  asNavFor: $(carouselMain)[i],
-			  prevNextButtons: true,
-			  draggable: true,
-			  cellAlign: 'center',
-			  adaptiveHeight: true,
-			  //contain: true,
-			  pageDots: false
-			});
-
+			}
 		}
+
 	}
-
-
-
+	carouselArticle();
 
 
 	function onLoaded  (){
@@ -195,6 +195,7 @@ $(function(){
 			});
 
 		}
+		carouselArticle();
 	}
 
 
@@ -300,7 +301,7 @@ $(function(){
 		   revSlider.revolution({
 					delay:6000,
 					startwidth: checkSm() ? $( window ).width() : checkMd() ? 970 : 1170,
-					startheight: checkSm() ? 450 :  bannerSlider ? 700 : $( window ).height(),
+					startheight: checkSm() ? 450 :  bannerSlider ? 720 : 680,
 					autoHeight:"off",
 					fullScreenAlignForce:"off",
 

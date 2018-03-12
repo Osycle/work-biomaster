@@ -315,7 +315,8 @@
   }
 
   40% {
-    transform: scale3d(.9, .9, .9);
+    //transform: scale3d(.9, .9, .9);
+    transform: scale3d(1, 1, 1);
   }
 
   60% {

@@ -1,18 +1,26 @@
- 
-@import "_normalize.scss";
-@import "_fonts.scss";
-@import "_font-awesome.scss";
-//@import "_animate.scss";
-@import "_bootstrap.scss";
-//@import "_text-input-1.scss";
-//@import "_text-input-2.scss";
-//@import "_fractionslider.scss";
-//@import "_owl.carousel.scss";
-//@import "_owl.theme.default.scss";
-@import "_aos.scss";
-@import "_fancybox.scss";
-//@import "_min-menu.scss";
-@import "_min-menu.mmenu.all.scss";
-//@import "_icomoon.scss";
-@import "_flickity.scss";
-@import "_style.scss";
+
+//THEME
+@import "_mixins";
+@import "_normalize";
+@import "_fonts";
+@import "_font-awesome";
+@import "_bootstrap";
+@import "_theme";
+
+//PLUGINS
+//@import "plugins/_animate"; 
+//@import "plugins/_text-input-1";
+//@import "plugins/_text-input-2";
+//@import "plugins/_owl.carousel";
+//@import "plugins/_owl.theme.default";
+@import "plugins/_aos";
+@import "plugins/_fancybox";
+@import "plugins/_min-menu.mmenu.all";
+@import "plugins/_flickity";
+
+
+//OTHER
+//@import "_min-menu";
+//@import "_icomoon";
+
+@import "_style";

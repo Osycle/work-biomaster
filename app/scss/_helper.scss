@@ -76,7 +76,7 @@ html{
 //--------------------Parag-MARGIN
 
 
-@for $i from 0 through 12 {
+@for $i from 0 through 4 {
 	.parag-m-h-#{5*$i} { 
 		p{
 			margin-left: 5*$i+px;
@@ -84,7 +84,7 @@ html{
 		}
 	}
 }
-@for $i from 0 through 12 {
+@for $i from 0 through 4 {
 	.parag-m-v-#{5*$i} { 
 		p{
 			margin-top: 5*$i+px;
@@ -184,22 +184,26 @@ html{
 
 
 // PIE FLEX
-.pie-flex-content{
+
+[class*="pie-flex"]{
 	display: flex;
+}
+.pie-flex-content{
 	flex-direction: row;
 	flex-wrap: wrap;
 	position: relative;
 }
 .pie-flex-center{
-	display: flex;
 	align-items: center;
-	height: 100%;
+	div{
+		width: inherit;
+	}
 }
 .pie-flex-justify{
   justify-content: center;
   flex: 1 1;
 }
-[class*="pie-xs-flex"], [class*="pie-sm-flex"], [class*="pie-md-flex"], [class*="pie-lg-flex"]{
+[class^="pie-xs-flex"], [class^="pie-sm-flex"], [class^="pie-md-flex"], [class^="pie-lg-flex"]{
 	align-self: center;
 }
 
@@ -251,7 +255,15 @@ html{
 [class*="pie-xs"]:not([class*="-flex"]){
 	display: table-cell;
 	vertical-align: middle;
+	&.pie-dry{
+		width: 0.00001%;
+		& > *{
+			width: max-content;
+		}
+	}
+
 }
+
 @media (min-width:768px){
 	@for $i from 0 through 12{
 		.pie-sm-#{$i}{
@@ -264,6 +276,13 @@ html{
 	[class*="pie-md"]:not([class*="-flex"]){
 		display: table-cell;
 		vertical-align: middle;
+		&.pie-dry{
+			width: 0.00001%;
+			& > *{
+				width: max-content;
+			}
+		}
+
 	}
 	@for $i from 0 through 12{
 		.pie-md-#{$i}{
@@ -276,6 +295,13 @@ html{
 	[class*="pie-lg"]:not([class*="-flex"]){
 		display: table-cell;
 		vertical-align: middle;
+		&.pie-dry{
+			width: 0.00001%;
+			& > *{
+				width: max-content;
+			}
+		}
+
 	}
 	@for $i from 0 through 12{
 		.pie-lg-#{$i}{
@@ -317,24 +343,23 @@ html{
 
 
 
-
-.align-center{
+.text-center{
 	text-align: center;
 }
-.align-left{
+.text-left{
 	text-align: left;
 }
-.align-right{
+.text-right{
 	text-align: right;
 }
 
-.align-center-impt{
+.text-center-impt{
 	text-align: center !important;
 }
-.align-left-impt{
+.text-left-impt{
 	text-align: left !important;
 }
-.align-right-impt{
+.text-right-impt{
 	text-align: right !important;
 }
 
@@ -368,67 +393,7 @@ html{
 
 
 
-.block{
-	display: block;
-}
-.none{
-	display: none;
-}
-.inline-block{
-	display: inline-block;
-}
-.li-inline-block{
-	li{
-		display: inline-block;
-	}
-}
 
-.vam{
-	vertical-align: middle;
-}
-.vam-table{
-	display: table-cell;
-	vertical-align: middle;
-	text-align: center;
-}
-
-.fuller{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-.claf{
-	@extend .fuller;
-	content: "";
-}
-
-.over-hidden{
-	overflow: hidden;
-}
-.bg-center{
-	background-position: center center;
-}
-
-
-.text-uppercase{
-	text-transform: uppercase;
-}
-.text-capitalize{
-	text-transform: capitalize;
-}
-.text-lowercase{
-	text-transform: lowercase;
-}
-.text-none{
-	text-transform: none;
-}
-
-
-.relative{
-	position: relative;
-}
 
 
 @media (max-width: 991px){
@@ -453,24 +418,23 @@ html{
 		float: right !important;
 	}
 
-
-	.align-left-sm{
+	.text-left-sm{
 		text-align: left ;
 	}
-	.align-center-sm{
+	.text-center-sm{
 		text-align: center ;
 	}
-	.align-right-sm{
+	.text-right-sm{
 		text-align: right ;
 	}
 
-	.align-left-sm-impt{
+	.text-left-sm-impt{
 		text-align: left !important;
 	}
-	.align-center-sm-impt{
+	.text-center-sm-impt{
 		text-align: center !important;
 	}
-	.align-right-sm-impt{
+	.text-right-sm-impt{
 		text-align: right !important;
 	}
 
@@ -501,22 +465,22 @@ html{
 	}
 
 
-	.align-left-md{
+	.text-left-md{
 		text-align: left ;
 	}
-	.align-center-md{
+	.text-center-md{
 		text-align: center ;
 	}
-	.align-right-md{
+	.text-right-md{
 		text-align: right ;
 	}
-	.align-left-md-impt{
+	.text-left-md-impt{
 		text-align: left !important;
 	}
-	.align-center-md-impt{
+	.text-center-md-impt{
 		text-align: center !important;
 	}
-	.align-right-md-impt{
+	.text-right-md-impt{
 		text-align: right !important;
 	}
 	
@@ -557,4 +521,115 @@ html{
 	}
 
 
+}
+
+
+
+
+
+
+
+
+
+.block{
+	display: block;
+}
+.none{
+	display: none;
+}
+.inline-block{
+	display: inline-block;
+}
+.li-inline-block{
+	li{
+		display: inline-block;
+	}
+}
+
+.vam{
+	vertical-align: middle;
+	display: inline-block;
+}
+.vam-table{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.fuller{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.claf{
+	@extend .fuller;
+	content: "";
+}
+
+.over-hidden{
+	overflow: hidden;
+}
+.bg-center{
+	background-position: center center;
+}
+
+
+.relative{
+	position: relative;
+}
+
+
+
+[align="right"]{
+	margin: 15px;
+	margin-right: 0;
+}
+[align="left"]{
+	margin: 15px;
+	margin-left: 0;
+}
+[underline]{
+	text-decoration: underline;
+}
+
+img[auto]{
+	width: auto;
+}
+[resize="none"]{	
+	resize: none;
+}
+
+@media (max-width:767px){
+	[align="right"], [align="left"]{
+		margin: 15px 0;
+		padding: 0 15px;
+		width: 100%;
+		max-width: 100%;
+	}
+	
+}
+
+
+.letter-none{
+	letter-spacing: -6px;
+	*{
+		letter-spacing: 0;
+	}
+}
+
+.img-auto-adaptive{
+	.img-content{
+		@include img-auto-adaptive();
+	}
+}
+.filter-white{
+	filter: brightness(0%) invert(100%);
+}
+.filter-black{
+	filter: brightness(0%) invert(0%);
+}
+.filter-color-1{
+	filter: brightness(0%) invert(60%) sepia() hue-rotate(180deg);
 }

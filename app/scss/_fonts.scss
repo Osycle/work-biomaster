@@ -17,6 +17,15 @@ $path: "../fonts";
 
 
 
+@font-face {
+    font-family: '1IsadoraMBold';
+    src: url($path+'/1IsadoraMBold.eot');
+    src: url($path+'/1IsadoraMBold.eot') format('embedded-opentype'),
+         url($path+'/1IsadoraMBold.woff2') format('woff2'),
+         url($path+'/1IsadoraMBold.woff') format('woff'),
+         url($path+'/1IsadoraMBold.ttf') format('truetype'),
+         url($path+'/1IsadoraMBold.svg#1IsadoraMBold') format('svg');
+}
 
 
 
@@ -37,8 +46,6 @@ $path: "../fonts";
 
 
 
-
-
 // @font-face {
 //     font-family: 'archive';
 //     src: url($path+'/archive.eot');
@@ -52,27 +59,25 @@ $path: "../fonts";
 
 
 
-@font-face {
-    font-family: 'Verdanabold';
-    font-weight: bold;
-    src: url($path+'/Verdanabold.eot');
-    src: url($path+'/Verdanabold.eot') format('embedded-opentype'),
-         url($path+'/Verdanabold.woff2') format('woff2'),
-         url($path+'/Verdanabold.woff') format('woff'),
-         url($path+'/Verdanabold.ttf') format('truetype'),
-         url($path+'/Verdanabold.svg#Verdanabold') format('svg');
-}
-@font-face {
-    font-family: 'Verdanaregular';
-    src: url($path+'/Verdanaregular.eot');
-    src: url($path+'/Verdanaregular.eot') format('embedded-opentype'),
-         url($path+'/Verdanaregular.woff2') format('woff2'),
-         url($path+'/Verdanaregular.woff') format('woff'),
-         url($path+'/Verdanaregular.ttf') format('truetype'),
-         url($path+'/Verdanaregular.svg#Verdanaregular') format('svg');
-}
-
-
+// @font-face {
+//     font-family: 'Verdanabold';
+//     font-weight: bold;
+//     src: url($path+'/Verdanabold.eot');
+//     src: url($path+'/Verdanabold.eot') format('embedded-opentype'),
+//          url($path+'/Verdanabold.woff2') format('woff2'),
+//          url($path+'/Verdanabold.woff') format('woff'),
+//          url($path+'/Verdanabold.ttf') format('truetype'),
+//          url($path+'/Verdanabold.svg#Verdanabold') format('svg');
+// }
+// @font-face {
+//     font-family: 'Verdanaregular';
+//     src: url($path+'/Verdanaregular.eot');
+//     src: url($path+'/Verdanaregular.eot') format('embedded-opentype'),
+//          url($path+'/Verdanaregular.woff2') format('woff2'),
+//          url($path+'/Verdanaregular.woff') format('woff'),
+//          url($path+'/Verdanaregular.ttf') format('truetype'),
+//          url($path+'/Verdanaregular.svg#Verdanaregular') format('svg');
+// }
 
 
 
