@@ -15475,20 +15475,20 @@ a[underline] {
   .flickity-btn-1 .flickity-prev-next-button .arrow, .short-productions-items .flickity-prev-next-button .arrow {
     fill: white; }
 
-body {
+.stock-news {
   /* cell number */ }
-  body .carousel-container {
+  .stock-news .carousel-container {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
-  body .carousel {
+  .stock-news .carousel {
     margin-bottom: 40px;
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
     flex-grow: 1; }
-  body .carousel-cell {
+  .stock-news .carousel-cell {
     width: 66%;
     height: 300px;
     margin-right: 10px;
@@ -15496,27 +15496,27 @@ body {
     -webkit-border-radius: 5px;
     border-radius: 5px;
     counter-increment: carousel-cell; }
-  body .carousel-cell:before {
+  .stock-news .carousel-cell:before {
     display: block;
     text-align: center;
     content: counter(carousel-cell);
     line-height: 300px;
     font-size: 80px;
     color: white; }
-  body .carousel-nav {
+  .stock-news .carousel-nav {
     width: 120px;
     margin-left: 10px;
     max-height: 300px;
     overflow-y: scroll; }
-  body .carousel-nav .carousel-cell {
+  .stock-news .carousel-nav .carousel-cell {
     height: 80px;
     width: 100px;
     margin: 0 0 5px 0;
     cursor: pointer; }
-  body .carousel-nav .carousel-cell:before {
+  .stock-news .carousel-nav .carousel-cell:before {
     font-size: 50px;
     line-height: 80px; }
-  body .carousel-nav .carousel-cell.is-nav-selected {
+  .stock-news .carousel-nav .carousel-cell.is-nav-selected {
     background: #ED2; }
 
 .carousel-article {
