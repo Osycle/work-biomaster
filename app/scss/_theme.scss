@@ -130,13 +130,18 @@ html{
 		margin: auto 15px;
 		list-style: disc;
 		line-height: 170%;
-		list-style-position: outside;
 	}
 	&.inside{
 		li{
 			list-style-position: inside;
 		}
 	}
+	&.outside{
+		li{
+			list-style-position: outside;
+		}
+	}
+
 }
 
 .list-style-1{

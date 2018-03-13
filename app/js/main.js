@@ -199,6 +199,53 @@ $(function(){
 	}
 
 
+	// stock-news carousel
+	(function(){
+		var $carouselMain = $('.stock-news .carousel-main').flickity({
+			//options
+		});
+		var flkty = $carouselMain.data('flickity');
+
+
+
+		var $carouselNav = $('.stock-news .carousel-nav');
+		var $carouselNavCells = $carouselNav.find('.carousel-cell');
+
+		var navTop  = $carouselNav.position().top;
+		var navCellHeight = $carouselNavCells.height();
+		var navHeight = $carouselNav.height();
+
+		$carouselNav.on( 'click', '.carousel-cell', function( event ) {
+		  var index = $( event.currentTarget ).index();
+		  $carouselMain.flickity( 'select', index );
+		});
+
+
+		$carouselMain.on( 'select.flickity', function() {
+		  // set selected nav cell
+		  $carouselNav.find('.is-nav-selected').removeClass('is-nav-selected');
+		  var $selected = $carouselNavCells.eq( flkty.selectedIndex ).addClass('is-nav-selected');
+		  // scroll nav
+		  var scrollY = $selected.position().top + $carouselNav.scrollTop() - ( navHeight + navCellHeight ) / 2;
+		  console.log( $selected.position().top+" + "+$carouselNav.scrollTop()+" - "+navHeight+" + "+navCellHeight+" / 2 = "+scrollY );
+		  $carouselNav.animate({
+		    scrollTop: scrollY
+		  });
+		});
+	})();
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	//SCROLL
 	var minMenu = $(".min-menu") || null;

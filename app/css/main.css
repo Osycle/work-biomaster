@@ -5787,17 +5787,19 @@ html {
   margin: 15px 0;
   margin: auto 15px;
   list-style: disc;
-  line-height: 170%;
-  list-style-position: outside; }
+  line-height: 170%; }
   [class*='list-style'] ul:not([class]) li {
     padding-left: 15px; }
 
 [class*='list-style'].inside li {
   list-style-position: inside; }
 
-.list-style-1 ul {
+[class*='list-style'].outside li {
+  list-style-position: outside; }
+
+.list-style-1 ul, .main-content ul {
   position: relative; }
-  .list-style-1 ul li {
+  .list-style-1 ul li, .main-content ul li {
     list-style: none;
     list-style-position: outside;
     list-style-image: url("../img/icons/list-icon.png"); }
@@ -11041,8 +11043,7 @@ http://flickity.metafizzy.co
   box-shadow: 0 0 20px 0 black;
   background-color: #2d9238; }
   .min-menu-header .min-menu-logo {
-    padding: 16px 0;
-    width: 120px; }
+    width: 80px; }
   .min-menu-header .min-menu-bar {
     padding: 10px 0; }
 
@@ -11257,6 +11258,9 @@ main {
 .main-content {
   z-index: 1;
   position: relative; }
+  @media (max-width: 991px) {
+    .main-content {
+      text-align: center; } }
 
 .font-family-2 {
   color: #9a9a9a;
@@ -11723,9 +11727,57 @@ a[underline] {
     .catalog-articles-items figure .img-content {
       height: 260px; } }
 
-.catalog-articles-in .text-content > h1 {
+.catalog-article .text-content > h1 {
   margin-top: 0;
   line-height: 1; }
+
+.stock-news .carousel-main {
+  margin-bottom: 40px; }
+  .stock-news .carousel-main .carousel-cell {
+    width: 100%;
+    min-height: 450px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    counter-increment: carousel-cell; }
+
+.stock-news .carousel-nav, .stock-news .carousel-main {
+  max-height: 450px; }
+
+.stock-news .carousel-nav {
+  overflow-y: scroll; }
+
+.stock-news .carousel-nav {
+  text-align: center; }
+  .stock-news .carousel-nav .carousel-cell {
+    width: 100%;
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 15px 15px;
+    height: 150px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    counter-increment: carousel-cell; }
+    .stock-news .carousel-nav .carousel-cell img {
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      width: auto; }
+    .stock-news .carousel-nav .carousel-cell .img-content {
+      width: 100%; }
+
+.stock-news .carousel-nav .carousel-cell:before {
+  font-size: 50px;
+  line-height: 80px; }
+
+.stock-news .carousel-nav .carousel-cell.is-nav-selected {
+  background: #ED2; }
 
 /*
 										 ---FOOTER---
@@ -11786,6 +11838,9 @@ a[underline] {
 
 .footer-feedback textarea {
   height: 150px; }
+
+.footer-feedback button {
+  color: white; }
 
 /*
 										 --- OTHER ---
@@ -11855,50 +11910,6 @@ a[underline] {
     background-color: transparent; }
   .flickity-btn-1 .flickity-prev-next-button .arrow, .short-productions-items .flickity-prev-next-button .arrow {
     fill: white; }
-
-.stock-news {
-  /* cell number */ }
-  .stock-news .carousel-container {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex; }
-  .stock-news .carousel {
-    margin-bottom: 40px;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1; }
-  .stock-news .carousel-cell {
-    width: 66%;
-    height: 300px;
-    margin-right: 10px;
-    background: #8C8;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    counter-increment: carousel-cell; }
-  .stock-news .carousel-cell:before {
-    display: block;
-    text-align: center;
-    content: counter(carousel-cell);
-    line-height: 300px;
-    font-size: 80px;
-    color: white; }
-  .stock-news .carousel-nav {
-    width: 120px;
-    margin-left: 10px;
-    max-height: 300px;
-    overflow-y: scroll; }
-  .stock-news .carousel-nav .carousel-cell {
-    height: 80px;
-    width: 100px;
-    margin: 0 0 5px 0;
-    cursor: pointer; }
-  .stock-news .carousel-nav .carousel-cell:before {
-    font-size: 50px;
-    line-height: 80px; }
-  .stock-news .carousel-nav .carousel-cell.is-nav-selected {
-    background: #ED2; }
 
 .carousel-article {
   position: relative;
