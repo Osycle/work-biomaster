@@ -1202,15 +1202,7 @@ a[underline]{
 	}
 }
 
-.video-content{
-	iframe{
-		width: 100%;
-		margin-top: 15px;
-		margin-bottom: 15px;
-		//width: 100%;
-		height: 300px;
-	}
-}
+
 
 
 
@@ -1321,63 +1313,101 @@ a[underline]{
 
 
 
-//stock-news-page
-.stock-news-page{
+//shares-news-page
+.shares-news-page{
 
 }
-.stock-news{
+.shares-news-video{
 
-	.carousel-container {
-	  //display: flex;
-	}
 
-	.carousel-main {
+	.video-main {
 	  margin-bottom: 40px;
 	  //flex-grow: 1;
-	  .carousel-cell {
+	  .video-cell {
 			width: 100%;
 			min-height: 450px;
-		  border-radius: 5px;
+		  
 		  cursor: pointer;
-		  counter-increment: carousel-cell;
+		  counter-increment: video-cell;
+		  iframe{
+	  		border: 5px solid rgba(black, 0.5);
+	  		background-color: rgba(black, 0.3);
+	  		border-radius: 10px;
+		  	//height: 100%;
+		  	width: 100%;
+		  	height: 510px;
+		  }
 		}
 	}
-	.carousel-nav, .carousel-main{
-		max-height: 450px;
-	}
-	.carousel-nav {
-	  overflow-y: scroll;
+
+	.video-nav {
+	  overflow-y: auto;
 	}
 
-	.carousel-nav{
+	.video-nav{
 		text-align: center;
-		.carousel-cell {
+		.video-cell {
 			width: 100%;
 			position:relative;
 			@include img-auto-adaptive();
 			//display: inline-table;
 			display: flex;
-			padding: 15px 15px;
-		  height: 150px;
+			padding: 0 15px;
+			margin: 15px 0;
+		  height: 160px;
 		  border-radius: 5px;
 		  cursor: pointer;
-		  counter-increment: carousel-cell;
-		  .img-content{
+		  counter-increment: video-cell;
+		  &:first-child{
+		  	margin-top: 0;
+		  }
+		  .video-content{
 		  	width: 100%;
+		  }
+		  iframe{
+		  	border: 3px solid white;
+		  	transition: all 0.3s ease-in-out;
+		  	pointer-events: none;
+		  	height: 100%;
+		  	width: 100%;
+		  	transform: scale(0.5);
+		  	opacity: 0;
+		  	&.in{
+		  		transform: scale(1);
+		  		opacity: 1;
+		  	}
 		  }
 		}
 	}
 
-	.carousel-nav .carousel-cell:before {
+	.video-nav .video-cell:before {
 	  font-size: 50px;
 	  line-height: 80px;
 	}
 
-	.carousel-nav .carousel-cell.is-nav-selected {
-	  background: #ED2;
+	.video-nav .video-cell.is-nav-selected {
+		iframe{
+			border-color: $color-1;
+		}
+	  //background: $color-2;
 	}
 
-
+	@media ( max-width: 991px ){	
+		.video-nav{
+			.video-cell{
+				height: 300px;
+				iframe{
+					pointer-events: auto;
+					border: 5px solid $color-1;
+				}
+			}
+		}
+	}
+	@media ( min-width:992px ) {
+		.video-nav, .video-main{
+			max-height: 525px;
+		}
+	}
 }
 
 

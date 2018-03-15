@@ -199,44 +199,30 @@ $(function(){
 	}
 
 
-	// stock-news carousel
+
+	var videoContainer = $(".shares-news-video") || null
+	if( videoContainer )
 	(function(){
-		var $carouselMain = $('.stock-news .carousel-main').flickity({
-			//options
-		});
-		var flkty = $carouselMain.data('flickity');
+		var selectClass = "is-nav-selected";
+		var mainCell = videoContainer.find(".video-main .video-cell");
+		var navCells = videoContainer.find(".video-nav .video-cell");
+		var selectCellSrc = videoContainer.find(".video-nav .is-nav-selected iframe").attr("src");
+		var mainIframe = mainCell.find("iframe");
+		mainIframe.attr( "src", selectCellSrc )
+		navCells.find("iframe").on( "load", function(){
+			$(this).addClass("in");
+		})
+		navCells.on("click", function( e ){
+			var that = $(this);
+			navCells.filter( "."+selectClass ).removeClass( selectClass );
+			that.closest( ".video-cell" ).addClass( selectClass );
+			var videoSrc = that.find( "iframe" ).attr( "src" );
+			mainIframe.attr( "src", videoSrc );
+			//(is-nav-selected)
+			console.log(this);
+		})
 
-
-
-		var $carouselNav = $('.stock-news .carousel-nav');
-		var $carouselNavCells = $carouselNav.find('.carousel-cell');
-
-		var navTop  = $carouselNav.position().top;
-		var navCellHeight = $carouselNavCells.height();
-		var navHeight = $carouselNav.height();
-
-		$carouselNav.on( 'click', '.carousel-cell', function( event ) {
-		  var index = $( event.currentTarget ).index();
-		  $carouselMain.flickity( 'select', index );
-		});
-
-
-		$carouselMain.on( 'select.flickity', function() {
-		  // set selected nav cell
-		  $carouselNav.find('.is-nav-selected').removeClass('is-nav-selected');
-		  var $selected = $carouselNavCells.eq( flkty.selectedIndex ).addClass('is-nav-selected');
-		  // scroll nav
-		  var scrollY = $selected.position().top + $carouselNav.scrollTop() - ( navHeight + navCellHeight ) / 2;
-		  console.log( $selected.position().top+" + "+$carouselNav.scrollTop()+" - "+navHeight+" + "+navCellHeight+" / 2 = "+scrollY );
-		  $carouselNav.animate({
-		    scrollTop: scrollY
-		  });
-		});
 	})();
-
-
-
-
 
 
 
