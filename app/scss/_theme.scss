@@ -5,7 +5,7 @@
 											--- Variables ---
 */
 
-$color-1: #33a63f !default;	// WHITE BLUE
+$color-1: #33a63f !default;	// GREEN
 $color-2: #0F1B29 !default;	// BLUE-DARK
 $color-3: #19204A !default;	// BLUE-DARK
 $color-4: #ffa800 !default;	// LIGHT ORANGE
@@ -149,8 +149,10 @@ html{
 		position: relative;
 		li{
 			list-style: none;
-			list-style-position: outside;
+			list-style-position: inside;
 			list-style-image: url('../img/icons/list-icon.png');
+			margin-top: 5px;
+			margin-bottom: 5px;
 		}
 	}
 
