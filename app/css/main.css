@@ -10896,12 +10896,82 @@ http://flickity.metafizzy.co
 /*
 										 --- HEADER ---
 */
+@-webkit-keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+@keyframes slideInDown {
+  from {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@-webkit-keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInUp {
+  from {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+    visibility: visible; }
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); } }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none; } }
+
 #header {
   top: 0;
   z-index: 110;
   right: 0;
   left: 0;
   position: absolute;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: black; }
   @media (max-width: 991px) {
     #header {
@@ -10919,26 +10989,24 @@ http://flickity.metafizzy.co
   .header-top-content p, .header-top-content strong {
     line-height: 140%; }
 
-.header-basket {
-  position: relative;
-  padding: 10px 0;
-  text-align: center; }
-  .header-basket .fa {
-    font-size: 35px; }
-  .header-basket .circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: black;
-    padding: 5px 0;
-    display: inline-block;
-    vertical-align: sub;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    background-color: white; }
+.header-scroll .menu {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
 
-.nav-top {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+.header-scroll.scrolled {
+  position: fixed !important;
+  -webkit-box-shadow: 0 1px 5px 0px black;
+  box-shadow: 0 1px 5px 0px black;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-animation: slideInDown 0.5s linear;
+  animation: slideInDown 0.5s linear; }
+  .header-scroll.scrolled .logo img {
+    width: 120px; }
+  .header-scroll.scrolled .menu {
+    height: 75px; }
 
 .logo .img-content {
   padding: 10px 0;
@@ -10946,6 +11014,9 @@ http://flickity.metafizzy.co
   top: 0px; }
 
 .logo img {
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   width: 100%;
   width: 150px;
   max-width: unset; }

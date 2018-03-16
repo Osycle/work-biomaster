@@ -235,16 +235,16 @@ $(function(){
 
 
 	//SCROLL
-	var minMenu = $(".min-menu") || null;
+	var minMenu = $(".header-scroll") || null;
 	var headerRange = false;
 	$( window ).on("scroll", function(e){
 
 		if( $(window).scrollTop() > 300 && headerRange == false ){
 			headerRange = true;
-			if ( minMenu ) $(".min-menu").addClass("scrolled");
+			if ( minMenu ) minMenu.addClass("scrolled");
 		}else if( $(window).scrollTop() < 300 && headerRange == true ){
 			headerRange = !true;
-			if ( minMenu ) $(".min-menu").removeClass("scrolled");
+			if ( minMenu ) minMenu.removeClass("scrolled");
 		}
 
 	});
